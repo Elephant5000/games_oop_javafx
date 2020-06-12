@@ -17,11 +17,11 @@ public class Logic {
     private final Figure[] figures = new Figure[32];
     private int index = 0;
 
-    public boolean findFigure(Cell[] steps) {
-        boolean rsl = true;
+    public boolean findFigureOnMove(Cell[] steps) {
+        boolean rsl = false;
         for (Cell step : steps) {
             if (findBy(step) != -1) {
-                rsl = false;
+                rsl = true;
                 break;
             }
         }
@@ -42,7 +42,7 @@ public class Logic {
             } catch (IllegalStateException illegalStateException) {
                 return false;
             }
-            if (!findFigure(steps)) {
+            if (findFigureOnMove(steps)) {
                 return false;
             }
             if (steps.length > 0 && steps[steps.length - 1].equals(dest)) {
